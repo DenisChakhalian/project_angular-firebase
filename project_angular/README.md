@@ -15,7 +15,7 @@ how to open locally:
 6. paste your apiKey here => ./src/environments/environment.prod.ts and ./src/environments/environment.ts
 7. paste your databaseURL here => ./src/environments/environment.prod.ts and ./src/environments/environment.ts
 8. create admins accounts in Firebase Authentication
-9. open console, and run "cd /your way to project_hrami/"
+9. open console, and run "cd /your way to project_angular/"
 10. run "npm install"
 11. run "npm run start" (to open site locally)
 12. run "npm run build" (to create dist folder)
