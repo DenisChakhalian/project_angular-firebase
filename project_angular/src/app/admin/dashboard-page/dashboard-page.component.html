@@ -1,0 +1,38 @@
+<div *ngIf="posts.length; else loading">
+  <div class="form-control">
+    <input type="text" placeholder="Знайти публікацію..." [(ngModel)]="searchStr">
+  </div>
+  <div class="adaptive-table">
+    <table>
+      <thead>
+      <tr>
+        <th>#</th>
+        <th>Назва</th>
+        <th>Автор</th>
+        <th>Дата</th>
+        <th>Дія</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let post of posts | searchPosts: searchStr; let idx = index">
+        <td>{{idx + 1}}</td>
+        <td>{{ post.title.length > 20 ? post.title.substring(0, 20) + '...' : post.title }}</td>
+        <td>{{ post.author.length > 20 ? post.author.substring(0, 20) + '...' : post.author }}</td>
+        <td>{{post.date | date: 'medium': '':'ua'}}</td>
+        <td>
+          <button
+            class="btn btn-link open"
+            [routerLink]="['/admin', 'post', post.id, 'edit']"
+          >
+            Відкрити
+          </button>
+          <a (click)="remove(post.id||'')">Видалити</a>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+<ng-template #loading>
+  <p class="text-center">Завантаження...</p>
+</ng-template>

@@ -1,0 +1,38 @@
+<p *ngIf="!post; else ElseBlock" class="text-center">Завантаження...</p>
+<h3 *ngIf="error" class="text-center text-white">
+  {{error}}
+</h3>
+<ng-template #ElseBlock>
+  <div *ngIf="post && !error">
+    <form [formGroup]="form" (ngSubmit)="submit()">
+      <div
+        [ngClass]="{invalid: form.get('title')?.touched && form.get('title')?.invalid}"
+        class="form-control"
+      >
+        <label for="title">Назва публікації:</label>
+        <input id="title" type="text" formControlName="title" maxlength="150">
+        <div
+          *ngIf="form.get('title')?.touched && form.get('title')?.invalid"
+          class="validation"
+        >
+          <small *ngIf="form.get('title')?.errors?.['required']">
+            Введіть назву публікації.
+          </small>
+        </div>
+      </div>
+      <div class="form-control">
+        <quill-editor formControlName="text"></quill-editor>
+      </div>
+
+      <button
+        class="btn btn-primary btn-fix"
+        type="submit"
+        [disabled]="form.invalid || submitted"
+      >Змінити
+      </button>
+    </form>
+  </div>
+</ng-template>
+
+
+

@@ -1,0 +1,26 @@
+<ng-template #ElseBlock>
+  <p class="text-center">Завантаження...</p>
+</ng-template>
+<h3 *ngIf="error" class="text-center text-white">
+  {{error}}
+</h3>
+
+  <div *ngIf="post$ | async as post; else ElseBlock">
+    <div class="post">
+      <div class="header">
+        <button routerLink="/" class="btn btn-link" *ngIf="!error">На головну</button>
+        <h1>{{post.title}}</h1>
+      </div>
+
+      <div class="info">
+        <strong>{{post.author}}</strong>
+        <small>{{post.date|date:'medium': '':'ua'}}</small>
+      </div>
+
+      <div *ngIf="post.text">
+        <quill-view-html [content]="post.text"></quill-view-html>
+      </div>
+    </div>
+  </div>
+
+

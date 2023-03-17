@@ -1,0 +1,46 @@
+<form [formGroup]="form" (ngSubmit)="submit()">
+  <h1>Створити нову публікацію</h1>
+
+  <div
+    [ngClass]="{invalid: form.get('title')?.touched && form.get('title')?.invalid}"
+    class="form-control"
+  >
+    <label for="title">Назва публікації:</label>
+    <input id="title" type="text" formControlName="title" maxlength="150">
+    <div
+      *ngIf="form.get('title')?.touched && form.get('title')?.invalid"
+      class="validation"
+    >
+      <small *ngIf="form.get('title')?.errors?.['required']">
+        Введіть назву публікації.
+      </small>
+    </div>
+  </div>
+
+  <div class="form-control">
+    <label>Контент публікації:</label>
+    <quill-editor formControlName="text" placeholder=""></quill-editor>
+  </div>
+
+  <div
+    [ngClass]="{invalid: form.get('author')?.touched && form.get('author')?.invalid}"
+    class="form-control"
+  >
+    <label for="author">Автор публікації:</label>
+    <input id="author" type="text" formControlName="author" maxlength="100">
+    <div
+      *ngIf="form.get('author')?.touched && form.get('author')?.invalid"
+      class="validation"
+    >
+      <small *ngIf="form.get('author')?.errors?.['required']">
+        Введіть автора публікації.
+      </small>
+    </div>
+  </div>
+
+  <button
+    type="submit"
+    class="btn btn-block btn-dark btn-fix"
+    [disabled]="form.invalid"
+  >Створити публікацію</button>
+</form>

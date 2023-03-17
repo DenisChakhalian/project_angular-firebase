@@ -1,0 +1,14 @@
+<div class="card">
+  <div class="card-header">
+    <h2>{{post.title.length > 50 ? post.title.substring(0, 32) + '...' : post.title}}</h2>
+    <small>{{post.author.length > 20 ? post.author.substring(0, 20) + '...' : post.author}}</small>
+  </div>
+  <div>
+    <small>{{post.date | date:'dd.MM.yyyy'}}</small>
+  </div>
+  <button
+    [routerLink]="['/post', post.id]"
+    class="btn btn-dark"
+  >Відкрити
+  </button>
+</div>
