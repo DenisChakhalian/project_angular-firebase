@@ -4,7 +4,7 @@
 
 site link: https://angular-project-d35d1.web.app/
 
-same project on Vue.js: 
+same project on Vue.js: https://github.com/DenisChakhalian/project_vue.js-firebase
 
 how to open locally:
 1. clone repository
